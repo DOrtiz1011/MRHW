@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AdDataSite.AdDataService.Ad>
+
+<h2>@ViewBag.Title</h2>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#AllAds").tablesorter({ widthFixed: true, widgets: ['zebra'] }).tablesorterPager({ container: $("#pager") });
+        });
+    </script>
+}
+
+<table id="AllAds" class="tablesorter" border="1">
+    <thead>
+        <tr>
+            <th>Ad Id</th>
+            <th>Brand Id</th>
+            <th>Brand Name</th>
+            <th>Num Pages</th>
+            <th>Position</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ad in Model)
+            {
+            <tr>
+                <td> @ad.AdId </td>
+                <td> @ad.Brand.BrandId </td>
+                <td> @ad.Brand.BrandName </td>
+                <td> @ad.NumPages </td>
+                <td> @ad.Position </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="pager" class="pager">
+    <form>
+        <img src="~/pager/first.png" class="first" />
+        <img src="~/pager/prev.png" class="prev" />
+        <input type="text" class="pagedisplay" />
+        <img src="~/pager/next.png" class="next" />
+        <img src="~/pager/last.png" class="last" />
+        <select class="pagesize">
+            <option selected="selected" value="10">10</option>
+            <option value="2000">2000</option>
+        </select>
+    </form>
+</div>

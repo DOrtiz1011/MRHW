@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AdDataSite.AdDataService;
+using AdDataSite.Models;
 
 namespace AdDataSite.Controllers
 {
     public class AdDataController : Controller
     {
+        IEnumerable<Ad> adData;
+
+        public AdDataController()
+        {
+            try
+            {
+                adData = new AdDataServiceClient().GetAdDataByDateRange(new DateTime(2011, 1, 1), new DateTime(2011, 2, 1));
+            }
+            catch
+            {
+                throw;
+            }
+        }
         // GET: AdData
         public ActionResult Index()
         {
@@ -20,70 +35,14 @@ namespace AdDataSite.Controllers
             return View();
         }
 
-        // GET: AdData/Create
-        public ActionResult Create()
+        public ActionResult List1_AllAds()
         {
-            return View();
-        }
+            ViewBag.id = "allData";
+            ViewBag.title = "All ads";
 
-        // POST: AdData/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
+            var models = adData.OrderBy(ad => ad.Brand.BrandName);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AdData/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: AdData/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AdData/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: AdData/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return PartialView("List1_AllAds", models);
         }
     }
 }
