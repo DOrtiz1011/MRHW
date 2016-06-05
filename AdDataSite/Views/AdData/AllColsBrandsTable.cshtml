@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AdDataSite.Models.BrandViewModel>
+
+<h1>@ViewBag.Title</h1>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#AllBrands").tablesorter({ widthFixed: true, widgets: ['zebra'] }).tablesorterPager({ container: $("#pager") });
+        });
+    </script>
+}
+
+<table id="AllBrands" class="tablesorter" border="1">
+    <thead>
+        <tr>
+            <th align="center">Brand Name</th>
+            <th align="center">Total Pages</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var brandViewModel in Model)
+        {
+            <tr>
+                <td> @brandViewModel.BrandName </td>
+                <td> @brandViewModel.TotalCoverage </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="pager" class="pager">
+    <form>
+        <img src="~/pager/first.png" class="first" />
+        <img src="~/pager/prev.png" class="prev" />
+        <input type="text" class="pagedisplay" />
+        <img src="~/pager/next.png" class="next" />
+        <img src="~/pager/last.png" class="last" />
+        <select class="pagesize" >
+            <option selected="selected" value="10">10</option>
+            <option value="2000">All</option>
+        </select>
+    </form>
+</div>

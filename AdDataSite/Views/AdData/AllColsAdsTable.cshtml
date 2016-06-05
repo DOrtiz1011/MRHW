@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<AdDataSite.AdDataService.Ad>
 
-<h2>@ViewBag.Title</h2>
+<h1>@ViewBag.Title</h1>
 
 @section scripts
 {
@@ -23,7 +23,7 @@
     </thead>
     <tbody>
         @foreach (var ad in Model)
-            {
+        {
             <tr>
                 <td> @ad.AdId </td>
                 <td> @ad.Brand.BrandId </td>
@@ -43,7 +43,7 @@
         <img src="~/pager/next.png" class="next" />
         <img src="~/pager/last.png" class="last" />
         <select class="pagesize" >
-            <option selected="selected" value="25">25</option>
+            <option selected="selected" value="10">10</option>
             <option value="2000">All</option>
         </select>
     </form>
