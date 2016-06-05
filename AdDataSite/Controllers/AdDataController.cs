@@ -8,20 +8,6 @@ namespace AdDataSite.Controllers
 {
     public class AdDataController : Controller
     {
-        IEnumerable<Ad> adData;
-
-        public AdDataController()
-        {
-            try
-            {
-                var adDataServiceClient = new AdDataServiceClient();
-                adData = adDataServiceClient.GetAdDataByDateRange(new DateTime(2011, 1, 1, 0, 0, 0), new DateTime(2011, 1, 1, 23, 59, 59));
-            }
-            catch
-            {
-                throw;
-            }
-        }
 
         // GET: AdData
         public ActionResult Index()
@@ -37,12 +23,12 @@ namespace AdDataSite.Controllers
 
         public ActionResult List1_AllAds()
         {
-            ViewBag.id = "allData";
+            
             ViewBag.title = "All ads";
 
-            var models = adData.OrderBy(ad => ad.Brand.BrandName);
+            var adData = new AdDataServiceClient().GetAdDataByDateRange(new DateTime(2011, 1, 1), new DateTime(2011, 4, 1)).OrderBy(x => x.Brand.BrandName).ToList();
 
-            return PartialView("List1_AllAds", models);
+            return View("List1_AllAds", adData);
         }
     }
 }
