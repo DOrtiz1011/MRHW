@@ -13,6 +13,20 @@
     @RenderSection("scripts", false)
 </head>
 <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div role="navigation">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index")</li>
+                    <li>@Html.ActionLink("All Ads", "List1_AllAds", new { Controller = "AdData" })</li>
+                    <li>@Html.ActionLink("Cover Ads", "List2_CoverAds", new { Controller = "AdData" })</li>
+                    <li>@Html.ActionLink("Top 5 Ads by Coverage & Brand", "List3_Top5AdsByCoverageAndBrand", new { Controller = "AdData" })</li>
+                    <li>@Html.ActionLink("Top 5 Brands by Coverage", "List4_TopBrandsByCoverage", new { Controller = "AdData" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
     </div>

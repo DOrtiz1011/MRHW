@@ -63,9 +63,9 @@ namespace AdDataSite.Controllers
 
             var BrandViewModelList = new List<BrandViewModel>();
 
-            foreach (var a in adData)
+            foreach (var brand in adData)
             {
-                BrandViewModelList.Add(new BrandViewModel() { BrandName = a.brand, TotalCoverage = a.totalCoverage });
+                BrandViewModelList.Add(new BrandViewModel() { BrandName = brand.brand, TotalCoverage = brand.totalCoverage });
             }
 
             return View("AllColsBrandsTable", BrandViewModelList);
