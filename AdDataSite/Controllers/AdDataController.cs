@@ -8,27 +8,26 @@ namespace AdDataSite.Controllers
 {
     public class AdDataController : Controller
     {
-
-        // GET: AdData
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: AdData/Details/5
-        public ActionResult Details(int id)
+        private List<Ad> GetAdData()
         {
-            return View();
+            return new AdDataServiceClient().GetAdDataByDateRange(new DateTime(2011, 1, 1), new DateTime(2011, 4, 1));
         }
 
         public ActionResult List1_AllAds()
         {
-            
-            ViewBag.title = "All ads";
+            ViewBag.title = "All Ads";
+            return View("AllColsTable", GetAdData().OrderBy(x => x.Brand.BrandName).ToList());
+        }
 
-            var adData = new AdDataServiceClient().GetAdDataByDateRange(new DateTime(2011, 1, 1), new DateTime(2011, 4, 1)).OrderBy(x => x.Brand.BrandName).ToList();
-
-            return View("List1_AllAds", adData);
+        public ActionResult List2_CoverAds()
+        {
+            ViewBag.title = "All Cover";
+            return View("AllColsTable", GetAdData().Where(x => x.Position == "Cover" && x.NumPages >= 0.5m).OrderBy(x => x.Brand.BrandName).ToList());
         }
     }
 }

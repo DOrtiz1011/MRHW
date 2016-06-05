@@ -264,7 +264,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\AdData\Index.cshtml" />
-    <Content Include="Views\AdData\List1_AllAds.cshtml" />
+    <Content Include="Views\AdData\AllColsTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
