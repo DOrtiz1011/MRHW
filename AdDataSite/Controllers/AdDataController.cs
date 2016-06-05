@@ -68,7 +68,7 @@ namespace AdDataSite.Controllers
                 BrandViewModelList.Add(new BrandViewModel() { BrandName = a.brand, TotalCoverage = a.totalCoverage });
             }
 
-            return PartialView("AllColsBrandsTable", BrandViewModelList);
+            return View("AllColsBrandsTable", BrandViewModelList);
         }
     }
 }
