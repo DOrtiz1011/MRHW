@@ -172,10 +172,10 @@ namespace AdDataSite.AdDataService {
     public interface IAdDataService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdDataService/GetAdDataByDateRange", ReplyAction="http://tempuri.org/IAdDataService/GetAdDataByDateRangeResponse")]
-        AdDataSite.AdDataService.Ad[] GetAdDataByDateRange(System.DateTime startDate, System.DateTime endDate);
+        System.Collections.Generic.List<AdDataSite.AdDataService.Ad> GetAdDataByDateRange(System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdDataService/GetAdDataByDateRange", ReplyAction="http://tempuri.org/IAdDataService/GetAdDataByDateRangeResponse")]
-        System.Threading.Tasks.Task<AdDataSite.AdDataService.Ad[]> GetAdDataByDateRangeAsync(System.DateTime startDate, System.DateTime endDate);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AdDataSite.AdDataService.Ad>> GetAdDataByDateRangeAsync(System.DateTime startDate, System.DateTime endDate);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -205,11 +205,11 @@ namespace AdDataSite.AdDataService {
                 base(binding, remoteAddress) {
         }
         
-        public AdDataSite.AdDataService.Ad[] GetAdDataByDateRange(System.DateTime startDate, System.DateTime endDate) {
+        public System.Collections.Generic.List<AdDataSite.AdDataService.Ad> GetAdDataByDateRange(System.DateTime startDate, System.DateTime endDate) {
             return base.Channel.GetAdDataByDateRange(startDate, endDate);
         }
         
-        public System.Threading.Tasks.Task<AdDataSite.AdDataService.Ad[]> GetAdDataByDateRangeAsync(System.DateTime startDate, System.DateTime endDate) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AdDataSite.AdDataService.Ad>> GetAdDataByDateRangeAsync(System.DateTime startDate, System.DateTime endDate) {
             return base.Channel.GetAdDataByDateRangeAsync(startDate, endDate);
         }
     }

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AdDataSite.AdDataService;
-using AdDataSite.Models;
 
 namespace AdDataSite.Controllers
 {
@@ -16,13 +14,15 @@ namespace AdDataSite.Controllers
         {
             try
             {
-                adData = new AdDataServiceClient().GetAdDataByDateRange(new DateTime(2011, 1, 1), new DateTime(2011, 2, 1));
+                var adDataServiceClient = new AdDataServiceClient();
+                adData = adDataServiceClient.GetAdDataByDateRange(new DateTime(2011, 1, 1, 0, 0, 0), new DateTime(2011, 1, 1, 23, 59, 59));
             }
             catch
             {
                 throw;
             }
         }
+
         // GET: AdData
         public ActionResult Index()
         {
